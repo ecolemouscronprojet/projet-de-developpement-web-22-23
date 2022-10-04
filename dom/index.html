@@ -14,11 +14,18 @@
 
     <script type="text/javascript">
         const carre = document.querySelector('#carre');
-        if (carre != null) {
-            setTimeout(() => {
-                carre.style.backgroundColor = 'yellow';
-            }, 5000);
-        }
+            if (carre != null) {
+                let i = 0;
+                const colors = ['black', 'yellow', 'red'];
+                setInterval(() => {
+                    carre.style.backgroundColor = colors[i];
+                    i++;
+                    if (i == 3) {
+                        i = 0;
+                    }
+                }, 500);
+
+            }
     </script>
 </body>
 </html>
