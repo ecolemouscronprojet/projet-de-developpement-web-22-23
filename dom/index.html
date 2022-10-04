@@ -33,6 +33,12 @@
             setTimeout(() => {
                 rectangle.textContent = 'Allez les diables !!';
             }, 3000);
+
+            let marginLeft = 0;
+            setInterval(() => {
+                marginLeft += 1;
+                rectangle.style.marginLeft = `${marginLeft}px`;
+            }, 10);
         }
 
     </script>
