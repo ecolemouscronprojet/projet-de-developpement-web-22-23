@@ -1,22 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
-<table style="width: 100%;border:1px solid #000">
-    <tr>
-        <th>firstName</th>
-        <th>lastName</th>
-        <th>birthday</th>
-    </tr>
-</table>
+    <button id="addUser">Ajouter un utilisateur</button>
+    <br>
+    <br>
+    <table style="width: 100%;border:1px solid #000">
+        <tr>
+            <th>firstName</th>
+            <th>lastName</th>
+            <th>birthday</th>
+        </tr>
+        <tbody>
+
+        </tbody>
+    </table>
 
     <script type="text/javascript">
+        const users = [
+            { firstname: 'John', lastname: 'Doe', birthdate: '2015-07-01' },
+            { firstname: 'Bob', lastname: 'Maurice', birthdate: '2000-07-01' },
+            { firstname: 'Maurice', lastname: 'Roger', birthdate: '1988-07-01' },
+            { firstname: 'Sylvain', lastname: 'Bernard', birthdate: '1900-07-01' },
+        ]
+
     </script>
 </body>
+
 </html>
