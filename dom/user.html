@@ -13,11 +13,13 @@
     <br>
     <br>
     <table style="width: 100%;border:1px solid #000">
-        <tr>
-            <th>firstName</th>
-            <th>lastName</th>
-            <th>birthday</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>birthday</th>
+            </tr>
+        </thead>
         <tbody>
 
         </tbody>
@@ -26,16 +28,43 @@
     <script type="text/javascript">
         const users = [
             { firstname: 'John', lastname: 'Doe', birthday: '2015-07-01' },
-            // { firstname: 'Bob', lastname: 'Maurice', birthday: '2000-07-01' },
-            // { firstname: 'Maurice', lastname: 'Roger', birthday: '1988-07-01' },
-            // { firstname: 'Sylvain', lastname: 'Bernard', birthday: '1900-07-01' },
+            { firstname: 'Bob', lastname: 'Maurice', birthday: '2000-07-01' },
+            { firstname: 'Maurice', lastname: 'Roger', birthday: '1988-07-01' },
+            { firstname: 'Sylvain', lastname: 'Bernard', birthday: '1900-07-01' },
         ];
 
-        document.getElementById("addUser").addEventListener('click', function(){
-            console.log('CLICK !!!!');
+
+        document.getElementById("addUser").addEventListener('click', function () {
+            const tbody = document.querySelector('table tbody');
+
+            users.forEach((u) => {
+                
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${u.firstname}</td>
+                        <td>${u.lastname}</td>
+                        <td>${u.birthday}</td>
+                    </tr>
+                    `;
+            })
         })
 
     </script>
 </body>
 
 </html>
+
+
+<!-- 
+
+
+var table = document.getElementById("table");
+         var row = table.insertRow();
+         var cell = row.insertCell();
+         var cell1 = row.insertCell();  
+         var cell2 = row.insertCell();
+         cell.innerHTML = document.getElementsByName('firstName').innerHtml = 'John';
+         cell1.innerHTML = document.getElementsByName('lastName').innerHtml = 'Doe';
+         cell2.innerHTML = document.getElementsByName('Birthday').innerHtml =  '2015-07-01';
+
+-->
