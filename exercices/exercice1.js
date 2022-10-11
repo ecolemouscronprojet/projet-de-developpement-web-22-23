@@ -15,12 +15,14 @@ function sortFunc() {
 
     return tableau;
 }
-  const result = sortFunc(2,7,1,8,13,18);
+
+function sortFunc1() {
+    const values = Array.from(arguments).map(e => e * 2);
+    values.sort((a, b) => a - b);
+
+    return values;
+}
+  const result = sortFunc1(2,7,1,8,13,18);
   console.log(result);
-
-// function calcul(list) {
-
-// }
-
 
 // calcul(10, 5, 40, 25, 100, 1, 30)
