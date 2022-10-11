@@ -33,20 +33,23 @@
             { firstname: 'Sylvain', lastname: 'Bernard', birthday: '1900-07-01' },
         ];
 
-
+        let i = 0;
         document.getElementById("addUser").addEventListener('click', function () {
             const tbody = document.querySelector('table tbody');
+                if (users[i] == null) {
+                    return;
+                }
 
-            users.forEach((u) => {
+                const u = users[i];
                 
                 tbody.innerHTML += `
                     <tr>
-                        <td>${u.firstname}</td>
-                        <td>${u.lastname}</td>
-                        <td>${u.birthday}</td>
-                    </tr>
-                    `;
-            })
+                            <td>${u.firstname}</td>
+                            <td>${u.lastname}</td>
+                            <td>${u.birthday}</td>
+                        </tr>
+                        `;
+                i++;
         })
 
     </script>
