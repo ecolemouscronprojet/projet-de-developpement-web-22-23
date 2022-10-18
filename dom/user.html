@@ -38,38 +38,43 @@
         let i = 0;
         
         
-        document.getElementById("addUser").addEventListener('click', function () {
-            const name = prompt('Quel est votre nom ?');
-            if (name == null) {
-                return;
-            }
-            const h1Name = document.querySelector('#name');
-            h1Name.innerHTML = name;
-        });
+        // document.getElementById("addUser").addEventListener('click', function () {
+        //     const name = prompt('Quel est votre nom ?');
+        //     if (name == null) {
+        //         return;
+        //     }
+        //     const h1Name = document.querySelector('#name');
+        //     h1Name.innerHTML = name;
+        // });
+
         // document.getElementById("addUser").addEventListener('mouseover', function () {
         //     alert('SALUT');
         // });
 
 
 
-        // document.getElementById("addUser").addEventListener('click', function () {
-        //     const tbody = document.querySelector('table tbody');
-        //         if (users[i] == null) {
-        //             return;
-        //         }
+        document.getElementById("addUser").addEventListener('click', function () {
+            const tbody = document.querySelector('table tbody');
+                if (users[i] == null) {
+                    return;
+                }
 
-        //         const u = users[i];
+                const u = users[i];
                 
-        //         tbody.innerHTML += `
-        //                  <tr>
-        //                     <td>${u.firstname}</td>
-        //                     <td>${u.lastname}</td>
-        //                     <td>${u.birthday}</td>
-        //                     <td><button class="btnSup">Supprimer</button></td>
-        //                 </tr>
-        //                 `;
-        //         i++;
-        // })
+                tbody.innerHTML += `
+                         <tr id="tr-${i}">
+                            <td>${u.firstname}</td>
+                            <td>${u.lastname}</td>
+                            <td>${u.birthday}</td>
+                            <td><button onClick="remove(${i})" class="btnSup">Supprimer</button></td>
+                        </tr>
+                        `;
+                i++;
+        })
+
+        function remove(line) {
+            document.getElementById(`tr-${line}`).remove();
+        }
 
     </script>
 </body>
