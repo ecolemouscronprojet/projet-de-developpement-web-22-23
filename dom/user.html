@@ -61,21 +61,39 @@
 
                 const u = users[i];
                 
+                // tbody.innerHTML += `
+                //          <tr id="tr-${i}">
+                //             <td>${u.firstname}</td>
+                //             <td>${u.lastname}</td>
+                //             <td>${u.birthday}</td>
+                //             <td><button onClick="remove(this, ${i})" class="btnSup">Supprimer</button></td>
+                //         </tr>
+                //         `;
                 tbody.innerHTML += `
-                         <tr id="tr-${i}">
+                         <tr>
                             <td>${u.firstname}</td>
                             <td>${u.lastname}</td>
                             <td>${u.birthday}</td>
-                            <td><button onClick="remove(this, ${i})" class="btnSup">Supprimer</button></td>
+                            <td><button id="btnSupp-${i}" class="btnSup">Supprimer</button></td>
                         </tr>
                         `;
-                i++;
+                
+                    document.getElementById(`btnSupp-${i}`).addEventListener("click", () => {
+                       console.log(`REMOVE: ${i}`);
+                    });
+                    i++;
+                            
         })
 
         function remove(button, line) {
-            button.parentElement.parentElement.remove();
+           button.parentElement.parentElement.remove();
             // document.getElementById(`tr-${line}`).remove();
         }
+
+
+    Array.from(document.getElementsByClassName('btnSup')).forEach((btn) => {
+       btn.addEventListener('click', () => console.log('yo'));  
+    });
 
     </script>
 </body>
