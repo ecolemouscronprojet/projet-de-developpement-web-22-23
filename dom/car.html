@@ -78,17 +78,23 @@
     </div>
     <script type="text/javascript">
         const car = document.getElementById("car-container");
-
+        const s = car.style;
+        let i = car.offsetLeft;
+        let j = car.offsetTop;
+        const d = 10;
         document.addEventListener("keydown", (event) => {
             if(event.keyCode == 40){
-                console.log('BAS')
+                j += d;
             } else if(event.keyCode == 38) {
-                console.log('HAUT')
+                j -= d;
             } else if(event.keyCode == 37) {
-                console.log('GAUCHE')
+                i -= d;
             } else if(event.keyCode == 39) {
-                console.log('DROITE')
+                i += d;
             }
+
+            s.left = String(i)+'px';
+            s.top = String(j)+'px';
         });
 
 
