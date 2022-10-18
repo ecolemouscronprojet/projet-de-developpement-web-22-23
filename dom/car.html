@@ -77,9 +77,21 @@
         <div id="car"></div>
     </div>
     <script type="text/javascript">
-        document.addEventListener("keydown", () => {
-            console.log('TEST');
+        const car = document.getElementById("car-container");
+
+        document.addEventListener("keydown", (event) => {
+            if(event.keyCode == 40){
+                console.log('BAS')
+            } else if(event.keyCode == 38) {
+                console.log('HAUT')
+            } else if(event.keyCode == 37) {
+                console.log('GAUCHE')
+            } else if(event.keyCode == 39) {
+                console.log('DROITE')
+            }
         });
+
+
     </script>
 </body>
 </html>
