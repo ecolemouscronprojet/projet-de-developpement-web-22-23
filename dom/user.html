@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <h1 id="name">MON NOM</h1>
     <button id="addUser">Ajouter un utilisateur</button>
     <br>
     <br>
@@ -35,24 +36,32 @@
         ];
 
         let i = 0;
-        document.getElementById("addUser").addEventListener('click', function () {
-            const tbody = document.querySelector('table tbody');
-                if (users[i] == null) {
-                    return;
-                }
+        
+        
+        // document.getElementById("addUser").addEventListener('mouseover', function () {
+        //     alert('SALUT');
+        // });
 
-                const u = users[i];
+
+
+        // document.getElementById("addUser").addEventListener('click', function () {
+        //     const tbody = document.querySelector('table tbody');
+        //         if (users[i] == null) {
+        //             return;
+        //         }
+
+        //         const u = users[i];
                 
-                tbody.innerHTML += `
-                         <tr>
-                            <td>${u.firstname}</td>
-                            <td>${u.lastname}</td>
-                            <td>${u.birthday}</td>
-                            <td><button class="btnSup">Supprimer</button></td>
-                        </tr>
-                        `;
-                i++;
-        })
+        //         tbody.innerHTML += `
+        //                  <tr>
+        //                     <td>${u.firstname}</td>
+        //                     <td>${u.lastname}</td>
+        //                     <td>${u.birthday}</td>
+        //                     <td><button class="btnSup">Supprimer</button></td>
+        //                 </tr>
+        //                 `;
+        //         i++;
+        // })
 
     </script>
 </body>
