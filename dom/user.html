@@ -38,6 +38,14 @@
         let i = 0;
         
         
+        document.getElementById("addUser").addEventListener('click', function () {
+            const name = prompt('Quel est votre nom ?');
+            if (name == null) {
+                return;
+            }
+            const h1Name = document.querySelector('#name');
+            h1Name.innerHTML = name;
+        });
         // document.getElementById("addUser").addEventListener('mouseover', function () {
         //     alert('SALUT');
         // });
