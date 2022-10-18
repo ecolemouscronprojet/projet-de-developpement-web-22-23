@@ -66,14 +66,15 @@
                             <td>${u.firstname}</td>
                             <td>${u.lastname}</td>
                             <td>${u.birthday}</td>
-                            <td><button onClick="remove(${i})" class="btnSup">Supprimer</button></td>
+                            <td><button onClick="remove(this, ${i})" class="btnSup">Supprimer</button></td>
                         </tr>
                         `;
                 i++;
         })
 
-        function remove(line) {
-            document.getElementById(`tr-${line}`).remove();
+        function remove(button, line) {
+            button.parentElement.parentElement.remove();
+            // document.getElementById(`tr-${line}`).remove();
         }
 
     </script>
