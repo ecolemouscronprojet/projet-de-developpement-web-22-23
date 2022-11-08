@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row mt-5">
+      <div class="col-6 offset-3">
+
+        <form>
+          <div class="mb-3">
+            <label for="lastname" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="lastname">
+          </div>
+          <div class="mb-3">
+            <label for="firstname" class="form-label">Prénom</label>
+            <input type="text" class="form-control" id="firstname">
+          </div>
+          <div class="mb-3">
+            <label for="civilite" class="form-label">Civilité</label>
+            <select class="form-select" id="civilite">
+              <option selected></option>
+              <option value="1">Monsieur</option>
+              <option value="2">Madame</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+
+      </div>
+    </div>
+
+
+    <div class="row mt-5">
+      <div class="col">
+
+
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nom</th>
+              <th scope="col">Prénom</th>
+              <th scope="col">Civilité</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mark</td>
+              <td>Otto</td>
+              <td>@mdo</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <script type="text/javascript">
+    
+  </script>
+
+</body>
+
+</html>

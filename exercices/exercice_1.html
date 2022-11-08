@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,18 +12,21 @@
             justify-content: center;
             align-items: center;
         }
-        #block{
+
+        #block {
             background: #EEE;
             border: 1px solid #CCC;
             width: 400px;
             height: 300px;
         }
-        #message{
+
+        #message {
             width: 80%;
             margin: 10%;
             height: 30px;
             line-height: 30px;
         }
+
         p {
             margin: 2% 5%;
         }
@@ -36,9 +40,10 @@
         }
     </style>
 </head>
+
 <body>
-    <h1>Exercice 1</h1>    
-    <p>Créez un évent listener qui va écouter les modification du champs texte <b>#message</b> et recopier son contenu 
+    <h1>Exercice 1</h1>
+    <p>Créez un évent listener qui va écouter les modification du champs texte <b>#message</b> et recopier son contenu
         dans la div <b>#recopy</b> en temps réel
     </p>
 
@@ -50,5 +55,16 @@
             <div id="recopy"></div>
         </div>
     </div>
+    <script type="text/javascript">
+        const message = document.getElementById('message');
+        const recopy = document.getElementById('recopy');
+        if (message && recopy) {
+            message.addEventListener('keyup', function(){
+                recopy.innerHTML = message.value;
+            });
+        }
+
+    </script>
 </body>
+
 </html>

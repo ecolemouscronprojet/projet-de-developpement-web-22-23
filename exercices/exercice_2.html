@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +12,8 @@
             justify-content: center;
             align-items: center;
         }
-        #block{
+
+        #block {
             background: #EEF;
             border: 1px solid #CCC;
             width: 400px;
@@ -21,6 +23,7 @@
             align-items: center;
             flex-direction: column;
         }
+
         p {
             margin: 2% 5%;
         }
@@ -34,14 +37,31 @@
             margin-top: 20px;
             background: #FFEE00;
             width: 70px;
-            height: 70px;;
+            height: 70px;
+            animation-name: rotate;
+            animation-duration: 0.5s;
+            animation-iteration-count: infinite ;
+            animation-play-state: paused;
+            animation-timing-function: linear;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body>
-    <h1>Exercice 2</h1>    
+    <h1>Exercice 2</h1>
     <p>
-        Créez un évent listener qui va écouter les clics sur le bouton <b>#btn</b> et qui va lancer une rotation infinie du carré <b>#square</b>.<br>
+        Créez un évent listener qui va écouter les clics sur le bouton <b>#btn</b> et qui va lancer une rotation infinie
+        du carré <b>#square</b>.<br>
         Au second clic, la rotation se stoppe, dès qu'un nouveau clic arrive elle reprend …<br>
         Le libellé du bouton doit changer en fonction de l'action start/stop
     </p>
@@ -54,5 +74,17 @@
             <div id="square"></div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        const btn = document.getElementById("btn");
+        const square = document.getElementById("square");
+        if (btn && square) {
+            btn.addEventListener("click", () => {
+                btn.innerHTML = btn.innerHTML == 'Start' ? "Stop" : "Start";
+                square.style.animationPlayState = btn.innerHTML == 'Start' ? "paused" : "running";
+            });
+        }
+    </script>
 </body>
+
 </html>
