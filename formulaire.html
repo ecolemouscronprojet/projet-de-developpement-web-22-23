@@ -15,7 +15,7 @@
     <div class="row mt-5">
       <div class="col-6 offset-3">
 
-        <form>
+        <form id="form">
           <div class="mb-3">
             <label for="lastname" class="form-label">Nom</label>
             <input type="text" class="form-control" id="lastname">
@@ -33,7 +33,7 @@
             </select>
           </div>
 
-          <button type="submit" class="btn btn-primary">Envoyer</button>
+          <button id="btn-save" type="submit" class="btn btn-primary">Envoyer</button>
         </form>
 
       </div>
@@ -68,7 +68,38 @@
   </div>
 
   <script type="text/javascript">
-    
+    const btnSave = document.getElementById('btn-save');
+    const form = document.getElementById('form');
+    const userTableTbody = document.querySelector('table tbody');
+
+    if (btnSave && form && userTableTbody) {
+      btnSave.addEventListener('click', (event) => {
+        event.preventDefault();
+        const firstname = document.getElementById('firstname').value.trim();
+        const lastname = document.getElementById('lastname').value.trim();
+        const civilite = document.getElementById('civilite').value.trim();
+        if (firstname.length == 0
+          || lastname.length == 0
+          || civilite.length == 0) {
+          alert('Vous devez renseigner tous les champs !!!!!');
+          return;
+        }
+
+        form.reset();
+        userTableTbody.innerHTML += `
+           <tr>
+              <td>${firstname}</td>
+              <td>${lastname}</td>
+              <td>${civilite}</td>
+            </tr>
+        `;
+
+
+      });
+
+    }
+
+
   </script>
 
 </body>
