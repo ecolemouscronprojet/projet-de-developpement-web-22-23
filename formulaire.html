@@ -7,6 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <style>
+    #form {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -33,6 +38,7 @@
             </select>
           </div>
 
+          <button id="btn-cancel" type="button" class="btn btn-danger">Annuler</button>
           <button id="btn-save" type="submit" class="btn btn-primary">Envoyer</button>
         </form>
 
@@ -40,9 +46,11 @@
     </div>
 
 
-    <div class="row mt-5">
+    <div class="row mt-5" id="container-table">
+      <div class="col-12 mb-3">
+        <button class="btn btn-success" id="add">Ajouter</button>
+      </div>
       <div class="col">
-
 
         <table class="table table-dark table-striped">
           <thead>
@@ -50,13 +58,20 @@
               <th scope="col">Nom</th>
               <th scope="col">Prénom</th>
               <th scope="col">Civilité</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Mark</td>
-              <td>Otto</td>
+              <td>Bob</td>
+              <td>Dylan</td>
               <td>@mdo</td>
+              <td><button class="btn btn-danger btn-remove">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+              </button></td>
             </tr>
           </tbody>
         </table>
@@ -66,11 +81,31 @@
 
 
   </div>
-
+  <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript">
-    const btnSave = document.getElementById('btn-save');
+    const containerTable = document.getElementById('container-table');
     const form = document.getElementById('form');
+    const btnSave = document.getElementById('btn-save');
     const userTableTbody = document.querySelector('table tbody');
+
+    $('table').on('click', '.btn-remove', function() {
+      $(this).closest('tr').remove();
+    });
+
+    $('#add, #btn-cancel').click(() => $('#container-table, #form').toggle('slow'));
+
+    
+    // // display form
+    // document.getElementById("add").addEventListener('click', () => {
+    //   containerTable.style.display = 'none';
+    //   form.style.display = 'block';
+    // });
+    
+    // // hide form
+    // document.getElementById("btn-cancel").addEventListener('click', () => {
+    //   containerTable.style.display = 'block';
+    //   form.style.display = 'none';
+    // });
 
     if (btnSave && form && userTableTbody) {
       btnSave.addEventListener('click', (event) => {
@@ -91,10 +126,18 @@
               <td>${firstname}</td>
               <td>${lastname}</td>
               <td>${civilite}</td>
+              <td><button class="btn btn-danger btn-remove">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg>
+                </button></td>
             </tr>
         `;
-
-
+        
+        containerTable.style.display = 'block';
+        form.style.display = 'none';
+          // $('#add').trigger('click');
       });
 
     }
