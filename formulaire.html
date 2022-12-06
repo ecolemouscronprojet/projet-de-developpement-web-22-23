@@ -62,17 +62,6 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Bob</td>
-              <td>Dylan</td>
-              <td>@mdo</td>
-              <td><button class="btn btn-danger btn-remove">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                </svg>
-              </button></td>
-            </tr>
           </tbody>
         </table>
 
@@ -87,20 +76,42 @@
     const form = document.getElementById('form');
     const btnSave = document.getElementById('btn-save');
     const userTableTbody = document.querySelector('table tbody');
+    let currentEditLine;
+    function toggleForm() {
+      $('form input, form select').val('');
+      $('#container-table, #form').toggle();
+    }
 
-    $('table').on('click', '.btn-remove', function() {
+
+    $('table').on('click', '.btn-remove', function () {
       $(this).closest('tr').remove();
     });
 
-    $('#add, #btn-cancel').click(() => $('#container-table, #form').toggle('slow'));
+    $('table').on('click', '.btn-update', function () {
+      currentEditLine = $(this).closest('tr');
+      const lastname = currentEditLine.find('td:nth-child(1)').text();
+      const firstname = currentEditLine.find('td:nth-child(2)').text();
+      const civilite = currentEditLine.find('td:nth-child(3)').text();
+     
+      toggleForm();
+      $('#lastname').val(lastname)
+      $('#firstname').val(firstname)
+      $('#civilite').val(civilite)
+      
+    });
 
-    
+
+
+
+    $('#add, #btn-cancel').click(() => toggleForm());
+
+
     // // display form
     // document.getElementById("add").addEventListener('click', () => {
     //   containerTable.style.display = 'none';
     //   form.style.display = 'block';
     // });
-    
+
     // // hide form
     // document.getElementById("btn-cancel").addEventListener('click', () => {
     //   containerTable.style.display = 'block';
@@ -110,6 +121,8 @@
     if (btnSave && form && userTableTbody) {
       btnSave.addEventListener('click', (event) => {
         event.preventDefault();
+
+
         const firstname = document.getElementById('firstname').value.trim();
         const lastname = document.getElementById('lastname').value.trim();
         const civilite = document.getElementById('civilite').value.trim();
@@ -121,23 +134,34 @@
         }
 
         form.reset();
-        userTableTbody.innerHTML += `
-           <tr>
-              <td>${firstname}</td>
-              <td>${lastname}</td>
-              <td>${civilite}</td>
-              <td><button class="btn btn-danger btn-remove">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-              </svg>
-                </button></td>
-            </tr>
-        `;
-        
+
+        if (currentEditLine) {
+            currentEditLine.find('td:nth-child(1)').text(lastname);
+            currentEditLine.find('td:nth-child(2)').text(firstname);
+            currentEditLine.find('td:nth-child(3)').text(civilite);
+            currentEditLine = null;
+        } else {
+          userTableTbody.innerHTML += `
+            <tr>
+                <td>${lastname}</td>
+                <td>${firstname}</td>
+                <td>${civilite}</td>
+                <td><button class="btn btn-danger btn-remove">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                  <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+                  </button>
+                  <button class="btn btn-primary btn-update">
+                  M
+                </button>
+                  </td>
+              </tr>
+          `;
+        }
         containerTable.style.display = 'block';
         form.style.display = 'none';
-          // $('#add').trigger('click');
+        // $('#add').trigger('click');
       });
 
     }
