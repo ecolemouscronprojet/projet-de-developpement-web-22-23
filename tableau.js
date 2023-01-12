@@ -1,19 +1,45 @@
 const users =
     [
-        { username: 'BOb', last_name: 'Roger', active: false, number: 7 },
+        { username: 'BOb', last_name: 'Roger', active: true, number: 7 },
         { username: 'Robert', last_name: 'Maurice', active: true, number: 6 },
-        { username: 'Andre', last_name: 'Sam', active: false, number: 1 },
+        { username: 'Andre', last_name: 'Sam', active: true, number: 1 },
         { username: 'David', last_name: 'Vero', active: true, number: 10 },
         { username: 'Leon', last_name: 'Sacha', active: true, number: 22 },
     ];
 
+
+    console.log(
+        users.filter(u => u.number === 1 || u.number === 7).map(u => u.last_name)
+    )
+
+
+
+    
+
 //filter
 
-console.log(
-    users.filter(function(u) {
-        return u.number > 7;
-    })
-)
+// retourner tous les utilisateurs qui ont un number soit de 1 ou sot de 7
+// retrourner que le lastname
+
+//console.log(users.every((u) => u.active));
+
+// console.log(
+//     users.some(function(u) {
+//         return u.active ;
+//     })
+// )
+// console.log(users.find((nom) => nom.username === "Leon"));
+
+
+
+// console.log(users.filter(function (u) { return u.active }))
+// console.log(users.filter((u) => u.active));
+
+// console.log(
+//     users.filter(function(u) {
+//         return u.number > 7;
+//     })
+// )
 
 
     // console.log(users.map(function (user) {
